@@ -1,0 +1,32 @@
+FROM node:21
+
+# Create app directory
+WORKDIR /app
+
+
+# Install app dependencies
+COPY package.json /app
+COPY package-lock.json /app
+RUN cd /app && npm install npm@latest -g
+RUN cd /app && npm install --force
+
+
+# Environment variables
+ENV MONGODBURL=0
+ENV DBNAME=0
+
+ENV EVENTCATEGORYID=0
+
+ENV TOKEN=0
+ENV APPLICATIONID=0
+ENV DBNADMINGUILDIDAME=0
+
+ENV APIURL=0
+
+
+# Bundle app source
+COPY . /app
+
+RUN chmod +x ./runner-bot.sh
+
+CMD [ "/bin/bash", "./runner-bot.sh" ] 

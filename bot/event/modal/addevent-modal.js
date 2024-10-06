@@ -1,0 +1,69 @@
+const {
+  ButtonInteraction,
+  Client,
+  EmbedBuilder,
+  PermissionsBitField,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ModalSubmitInteraction,
+  StringSelectMenuBuilder,
+  RoleSelectMenuBuilder,
+  ChannelType,
+} = require("discord.js");
+
+module.exports = {
+  id: "addevent-modal",
+
+  /**
+   *
+   * @param {ModalSubmitInteraction} interaction
+   * @param {Client} client
+   */
+  async execute(interaction, client) {
+    const eventID = interaction.fields.getTextInputValue("eventID");
+    const eventName = interaction.fields.getTextInputValue("eventName");
+    const description = interaction.fields.getTextInputValue("description");
+    const date = interaction.fields.getTextInputValue("date");
+    const content = interaction.fields.getTextInputValue("content");
+    const eventDB = require("../../event/schema/eventroles");
+
+    const embed = new EmbedBuilder().setDescription(
+      [
+        `## Event Added`,
+        ``,
+        `**Event ID**: \`${eventID}\``,
+        `**Event Name**: \`${eventName}\``,
+        ``,
+        `## Now Select a Role for this Event`,
+      ].join("\n")
+    );
+
+    const row = new ActionRowBuilder().addComponents(
+      new RoleSelectMenuBuilder()
+        .setCustomId("eventRole:" + eventID)
+        .setPlaceholder("Select a Role")
+        .setMaxValues(1)
+        .setMinValues(1)
+    );
+
+    const data = await eventDB.findOne({ ID: eventID });
+
+    if (data) {
+      return interaction.reply({
+        content: "## :x: Event ID already exists",
+        ephemeral: true,
+      });
+    }
+
+    await eventDB.create({
+      ID: eventID,
+      EventName: eventName,
+      Content: content,
+      Date: date,
+      Description: description,
+    });
+
+    interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
+  },
+};
