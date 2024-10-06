@@ -55,13 +55,13 @@ module.exports = {
             .setAuthor({
               name: interaction.guild.name,
               iconURL: interaction.guild.iconURL(),
-              url: `https://fna-events.de/posts/${data.EventName}#signup`,
+              url: `https://fna-events.de/posts/${data.ID}#signup`,
             }),
         ],
         components: [
           new ActionRowBuilder().addComponents(
             new ButtonBuilder()
-              .setURL(`https://fna-events.de/posts/${data.EventName}#signup`)
+              .setURL(`https://fna-events.de/posts/${data.ID}`)
               .setStyle(ButtonStyle.Link)
               .setLabel("Sign up for this Event")
               .setEmoji("<:fna:1290705466099368007>")
