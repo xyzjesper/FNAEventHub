@@ -42,9 +42,6 @@ module.exports = {
       });
     }
 
-    await eventDB.findOneAndUpdate({ ID: id }, { Ended: true });
-    await userDB.deleteMany({ EventID: id });
-
     const users = await userDB.find({ EventID: id }).sort();
 
     users.forEach(async (user) => {
@@ -57,6 +54,9 @@ module.exports = {
         await member.roles.remove(data.RoleID);
       }
     });
+
+    await eventDB.findOneAndUpdate({ ID: id }, { Ended: true });
+    await userDB.deleteMany({ EventID: id });
 
     interaction.reply({
       content: "## :white_check_mark: Event removed",
