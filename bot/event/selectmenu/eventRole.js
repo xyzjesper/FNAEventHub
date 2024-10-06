@@ -51,6 +51,7 @@ module.exports = {
           new EmbedBuilder()
             .setTitle(data.EventName)
             .setDescription(data.Content)
+            .setThumbnail(data.Image)
             .setTimestamp()
             .setAuthor({
               name: interaction.guild.name,
