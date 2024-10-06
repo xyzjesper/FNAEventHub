@@ -24,7 +24,7 @@ module.exports = {
     const eventID = interaction.fields.getTextInputValue("eventID");
     const eventName = interaction.fields.getTextInputValue("eventName");
     const description = interaction.fields.getTextInputValue("description");
-    const date = interaction.fields.getTextInputValue("date");
+    const image = interaction.fields.getTextInputValue("image");
     const content = interaction.fields.getTextInputValue("content");
     const eventDB = require("../../event/schema/eventroles");
 
@@ -60,7 +60,7 @@ module.exports = {
       ID: eventID,
       EventName: eventName,
       Content: content,
-      Date: date,
+      Image: image,
       Description: description,
     });
 

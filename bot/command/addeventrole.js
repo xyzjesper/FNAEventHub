@@ -55,10 +55,10 @@ module.exports = {
       .setStyle(TextInputStyle.Short);
 
     date
-      .setPlaceholder("Date")
-      .setLabel("Date")
+      .setPlaceholder("https://deinimage.de/image.png")
+      .setLabel("Image URl")
       .setRequired(true)
-      .setCustomId("date")
+      .setCustomId("image")
       .setStyle(TextInputStyle.Short);
 
     content

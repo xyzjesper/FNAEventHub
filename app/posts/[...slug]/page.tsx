@@ -7,6 +7,7 @@ import eventDB from "../../../backend/database/schemas/eventroles";
 import { connect, default as mongoose } from "mongoose";
 import Markdown from "markdown-to-jsx";
 import Link from "next/link";
+import Image from "next/image";
 
 mongoose.set("strictQuery", true);
 const mongoUrl = process.env.MONGODBURL;
@@ -66,8 +67,21 @@ export default async function PostPage({ params }: PostProps) {
   }
 
   return (
-    <article className="py-6 prose dark:prose-invert">
-      <h1 className="mb-2">{postdata.EventName}</h1>
+    <article className="py-6 prose dark:prose-invert items-center object-center">
+      <div className="flex flex-col items-center">
+        <Image
+          src={
+            postdata.Image
+              ? postdata.Image
+              : "https://raw.githubusercontent.com/xyzjesper/FNAEventHub/refs/heads/main/public/logo.png"
+          }
+          width={100}
+          height={100}
+          alt={postdata.EventName}
+          className="mb-4"
+        />
+        <h1 className="mb-2">{postdata.EventName}</h1>
+      </div>
       <hr className="my-4" />
       {/* Code MDX */}
       <Markdown
@@ -153,7 +167,7 @@ export default async function PostPage({ params }: PostProps) {
       <div id="signup"></div>
 
       {postdata.Ended ? (
-        <h1>Das Even ist beendet!</h1>
+        <h1>Das Event ist beendet!</h1>
       ) : (
         <SiginForm postID={postdata.ID} />
       )}

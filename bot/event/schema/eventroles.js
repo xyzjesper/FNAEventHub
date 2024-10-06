@@ -6,7 +6,7 @@ const eventrole = new Schema({
   RoleID: String,
   EventName: String,
   Content: String,
-  Date: String,
+  Image: String,
   Description: String,
   Ended: Boolean,
 });
