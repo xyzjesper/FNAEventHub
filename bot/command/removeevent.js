@@ -14,7 +14,7 @@ const {
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("remove-event")
-    .setDescription("Add an event to the event list")
+    .setDescription("Remove an event from the event list")
     .setDMPermission(false)
     .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator)
     .addStringOption((option) =>
