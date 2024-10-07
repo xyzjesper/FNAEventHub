@@ -166,7 +166,12 @@ export default async function PostPage({ params }: PostProps) {
       <br></br>
       <div id="signup"></div>
 
-      {postdata.Ended ? (
+      {postdata.Looked ? (
+        <h1>
+          Das Event ist voll! Bitte warte etwas oder komme beim nächsten event
+          vorbei.
+        </h1>
+      ) : postdata.Ended ? (
         <h1>Das Event ist beendet!</h1>
       ) : (
         <SiginForm postID={postdata.ID} />

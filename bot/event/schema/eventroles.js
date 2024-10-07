@@ -9,6 +9,7 @@ const eventrole = new Schema({
   Image: String,
   Description: String,
   Ended: Boolean,
+  Looked: Boolean,
 });
 
 module.exports = model("eventrole", eventrole);

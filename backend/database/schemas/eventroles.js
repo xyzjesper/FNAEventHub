@@ -9,6 +9,7 @@ const eventroleSchema = new Schema({
   Image: String,
   Description: String,
   Ended: { type: Boolean, default: false },
+  Looked: { type: Boolean, default: false },
 });
 
 const eventrole = models.eventrole || model("eventrole", eventroleSchema);

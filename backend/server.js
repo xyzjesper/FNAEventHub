@@ -3,6 +3,9 @@ const cors = require("cors");
 const app = express();
 require("dotenv").config();
 
+const SUCCESS = process.env.SUCCESSURL;
+const ERROR = process.env.ERRORURL;
+
 const mongoose = require("mongoose");
 mongoose
   .connect(process.env.MONGODBURL, {
@@ -32,22 +35,64 @@ app.get("/", (req, res) => {
   res.sendFile(`${process.cwd()}/backend/html/index.html`);
 });
 
-app.post("/event", async (req, res) => {
-  const userDB = require("./database/schemas/eventuser");
-  const data = await userDB.findOne({
-    Username: req.body.headers.Name,
-  });
+app.get("/event", async (req, res) => {
+  const code = req.query.code;
+  const { request } = require("undici");
+  const tokenResponseData = await request(
+    "https://discord.com/api/oauth2/token",
+    {
+      method: "POST",
+      body: new URLSearchParams({
+        client_id: process.env.APPLICATIONID,
+        client_secret: process.env.CLIENTSECRET,
+        code,
+        grant_type: "authorization_code",
+        redirect_uri: process.env.REDIRECTURL,
+        scope: "identify",
+      }).toString(),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
+  );
 
-  if (data) {
-    return res.status(201).json({ error: "User already exists" });
-  }
+  const oauthData = await tokenResponseData.body.json();
 
-  await userDB.create({
-    EventID: req.body.headers.ID,
-    Username: req.body.headers.Name,
-    Infos: req.body.headers.Info || "No Info",
-  });
-  return res.status(200).json({ message: "User created" });
+  fetch("https://discord.com/api/users/@me", {
+    headers: {
+      authorization: `${oauthData.token_type} ${oauthData.access_token}`,
+    },
+  })
+    .then((result) => result.json())
+    .then(async (response) => {
+      const userDB = require("./database/schemas/eventuser");
+
+      const data = await userDB.findOne({
+        Username: response.username,
+      });
+
+      const url = req.url;
+      console.log();
+      console.log();
+
+      if (data) {
+        return res.redirect(ERROR);
+      }
+
+      await userDB.create({
+        EventID: url.split("&")[1].split("=")[1].split("-")[0],
+        Username: response.username,
+        Infos: Buffer.from(
+          url.split("&")[1].split("=")[1].split("-")[1],
+          "base64"
+        ).toString("utf-8"),
+      });
+
+      res.redirect(SUCCESS);
+    })
+    .catch(() => {
+      return res.redirect(ERROR);
+    });
 });
 
 const PORT = process.env.PORT || 3001;

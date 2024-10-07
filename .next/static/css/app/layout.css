@@ -1159,9 +1159,6 @@ video {
   -o-object-position: center;
      object-position: center;
 }
-.p-2 {
-  padding: 0.5rem;
-}
 .p-2\.5 {
   padding: 0.625rem;
 }
@@ -1226,10 +1223,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 .font-bold {
   font-weight: 700;

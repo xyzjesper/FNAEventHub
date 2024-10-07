@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    NEXTAUTHURL: process.env.AUTHURL, // pulls from .env file
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
