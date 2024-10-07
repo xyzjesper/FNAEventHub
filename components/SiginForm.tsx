@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 
 interface SiginFormProps {
@@ -32,13 +33,17 @@ export function SiginForm({ postID }: { postID: string }): JSX.Element {
     <form className="max-w-sm mx-auto" onSubmit={sendEventData}>
       <div className="mb-5">
         <label
-          form="infos"
+          htmlFor="infos"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
-          Infomations from you
+          <h5>Weitere Infos</h5>
         </label>
+        <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
+          Bitte gebe zusätzliche Informationen ein, die für das Event relevant
+          sein könnten. (Event Team Partner, etc.)
+        </p>
         <input
-          type="infos"
+          type="text"
           id="infos"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
@@ -46,7 +51,6 @@ export function SiginForm({ postID }: { postID: string }): JSX.Element {
 
       <br></br>
       <input
-        checked
         id="checkbox-1"
         required
         type="checkbox"
@@ -57,22 +61,29 @@ export function SiginForm({ postID }: { postID: string }): JSX.Element {
         form="checkbox-1"
         className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
       >
-        I agree to the{" "}
+        Ich akzeptiere die{" "}
         <Link
           href="/terms"
           className="text-blue-600 hover:underline dark:text-blue-500"
         >
-          terms and conditions
+          allgemeinen AGB's
         </Link>
         .<p className="text-red-600 inline">*</p>
       </label>
       <br></br>
       <br></br>
       <button
-        className="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2"
+        className="text-center w-full text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 py-1.5 inline-flex items-center justify-center me-2 mb-2 transition-all duration-300"
         type="submit"
       >
-        Event Anmeldung with Discord
+        <Image
+          className="mr-2"
+          src={"/discord-mark-white.png"}
+          alt="Discord"
+          height={16}
+          width={16}
+        />
+        <p className="text-center">Mit Discord anmelden</p>
       </button>
 
       <input type="hidden" id="ID" value={postID} />

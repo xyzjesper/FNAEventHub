@@ -45,29 +45,42 @@ export default async function Home() {
   const posts = await getPosts();
 
   return (
-    <div className="prose dark:prose-invert">
+    <div className="prose dark:prose-invert items-center object-center">
       {posts.map((post, index) => (
-        <div
-          key={index}
-          className="bg-gray-800 rounded-lg p-4 m-4 flex items-center"
+        <Link
+          className="text-blue-500 dark:text-blue-400 hover:underline"
+          href={`/posts/${post.ID}`}
         >
-          <Image
-            className="rounded-full mr-4"
-            src={
-              post.Image
-                ? post.Image
-                : "https://raw.githubusercontent.com/xyzjesper/FNAEventHub/refs/heads/main/public/logo.png"
-            }
-            width={100}
-            height={100}
-            alt={post.EventName}
-          />
-          <div>
-            <h1 className="text-2xl font-bold">{post.EventName}</h1>
-            <p>{post.Description}</p>
-            <Link href={`/posts/${post.ID}`}>Read more</Link>
+          <div
+            key={index}
+            className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 m-4 transition-transform transform hover:scale-105"
+          >
+            <div className="flex flex-col items-center">
+              {post.Image ? (
+                <Image
+                  src={post.Image}
+                  alt="Logo"
+                  width={300}
+                  height={300}
+                ></Image>
+              ) : (
+                <Image
+                  className="mb-4"
+                  src={post.Image ? post.Image : "/logo.png"}
+                  width={300}
+                  sizes="any"
+                  height={300}
+                  alt={post.EventName}
+                />
+              )}
+
+              <h1 className="text-2xl font-bold mb-2">{post.EventName}</h1>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                {post.Description}
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

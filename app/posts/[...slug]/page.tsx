@@ -67,14 +67,10 @@ export default async function PostPage({ params }: PostProps) {
   }
 
   return (
-    <article className="py-6 prose dark:prose-invert items-center object-center">
+    <article className="p-10 py-6 prose dark:prose-invert items-center object-center rounded-3xl bg-gray-800">
       <div className="flex flex-col items-center">
         <Image
-          src={
-            postdata.Image
-              ? postdata.Image
-              : "https://raw.githubusercontent.com/xyzjesper/FNAEventHub/refs/heads/main/public/logo.png"
-          }
+          src={postdata.Image ? postdata.Image : "/logo.png"}
           width={100}
           height={100}
           alt={postdata.EventName}
@@ -165,14 +161,14 @@ export default async function PostPage({ params }: PostProps) {
       <br></br>
       <br></br>
       <div id="signup"></div>
-
+      <hr></hr>
       {postdata.Looked ? (
-        <h1>
+        <h5 className="text-center">
           Das Event ist voll! Bitte warte etwas oder komme beim nächsten event
           vorbei.
-        </h1>
+        </h5>
       ) : postdata.Ended ? (
-        <h1>Das Event ist beendet!</h1>
+        <h5 className="text-center">Das Event ist beendet!</h5>
       ) : (
         <SiginForm postID={postdata.ID} />
       )}

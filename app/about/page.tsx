@@ -4,7 +4,7 @@ export default async function Home() {
   return (
     <>
       <div className="min-h-screen p-6">
-        <div className="max-w-4xl mx-auto p-8 rounded-lg shadow-md">
+        <div className="max-w-4xl mx-auto p-8 rounded-3xl bg-gray-800">
           <h1 className="text-center mt-6 mb-12 bg-gradient-to-br to-blue-500 via-purple-600 from-pink-300 bg-clip-text text-transparent selection:text-gray-700 dark:selection:text-white/90 items-center mx-auto text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold">
             FNA-Events
           </h1>

@@ -22,75 +22,47 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <link rel="icon" href="/logo.png" sizes="any" />
         <meta
-  http-equiv="Content-Security-Policy"
-  content="upgrade-insecure-requests" />
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
       </head>
       <body
-        className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
+        className={`antialiased min-h-screen bg-gradient-to-br from-purple-800  to-slate-800 dark:text-slate-50 ${inter.className}`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="max-w-2xl mx-auto py-10 px-4">
-            <header>
-              <div className="flex items-center justify-between">
-                <nav>
-                  <Link href={"/about"}>
-                    {" "}
-                    <Image
-                      src={"/logo.png"}
-                      alt="Logo"
-                      width={80}
-                      height={80}
-                    ></Image>
-                  </Link>
-                </nav>{" "}
-                <nav className="ml-auto text-sm font-medium space-x-6">
-                  <Link href="/">
-                    {" "}
-                    <p className="mr-1 inline">Home</p>
-                  </Link>
-                  <Link href="/discord">
-                    {" "}
-                    <p className=" inline">Discord</p>
-                  </Link>
-                  <Link href="/about">
-                    {" "}
-                    <p className="mr-52 inline">About</p>
-                  </Link>
-                </nav>
-                <ModeToggle />
-              </div>
-            </header>
-            <main>{children}</main>
-          </div>
-        </ThemeProvider>
-        <div className="items-center text-center">
-          <Link href="/imprint">
-            <p className="inline text-center text-sm text-gray-500 mt-8">
-              Impressum
-            </p>
-          </Link>{" "}
-          -{" "}
-          <Link href={"/discord"}>
-            {" "}
-            <p className="inline text-center text-sm text-gray-500 mt-8">
-              Discord
-            </p>
-          </Link>{" "}
-          -{" "}
-          <Link href={"/terms"}>
-            {" "}
-            <p className=" inline text-center text-sm text-gray-500 mt-8">
-              Terms of Service
-            </p>
-          </Link>
+        <div
+          className={`antialiased min-h-screen bg-gradient-to-br from-purple-900  to-slate-900 dark:text-slate-50`}
+        >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <div className="max-w-2xl mx-auto py-10">
+              <header className="bg-white dark:bg-gray-800 shadow-md p-6 mb-5 rounded-full">
+                <div className="flex items-center justify-between">
+                  <nav>
+                    <Link href={"/about"}>
+                      <Image
+                        src={"/logo.png"}
+                        alt="Logo"
+                        width={100}
+                        height={100}
+                      />
+                    </Link>
+                  </nav>
+                  <nav className="ml-auto text-sm font-medium space-x-6">
+                    <Link href="/">
+                      <p className="mr-1 inline">Home</p>
+                    </Link>
+                    <Link href="/discord">
+                      <p className="inline">Discord</p>
+                    </Link>
+                    <Link href="/about">
+                      <p className="inline">About</p>
+                    </Link>
+                  </nav>
+                </div>
+              </header>
+              {children}
+            </div>
+          </ThemeProvider>
         </div>
-        <p className="text-center text-sm text-gray-500 mt-8">
-          &copy; {new Date().getFullYear()} FNA-Events. Alle Rechte vorbehalten.
-        </p>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
       </body>
     </html>
   );
