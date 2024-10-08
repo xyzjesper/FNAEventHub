@@ -16,25 +16,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/posts/[...slug]/page.js"
     ],
-    "/about/page": [
+    "/profile/signin/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
+      "static/chunks/app/profile/signin/page.js"
     ],
-    "/terms/page": [
+    "/profile/signined/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/terms/page.js"
-    ],
-    "/imprint/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/imprint/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/profile/signined/page.js"
     ]
   }
 }
