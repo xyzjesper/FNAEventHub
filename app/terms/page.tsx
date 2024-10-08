@@ -1,11 +1,11 @@
 export default async function Terms() {
   return (
-    <main>
+    <main className="max-w-4xl mx-auto p-8 rounded-3xl bg-gray-800 text-white" >
       <br />
-      <h1 className="text-xl font-bold">Terms & Privacy</h1>
+      <h1 className="text-2xl font-semibold text-gray-400 mb-4">Terms & Privacy</h1>
       <hr />
       <br></br>
-      <h3 className="text-lg font-semibold">Your Rights</h3>
+      <h3 className="text-2xl font-semibold text-gray-400 mb-4">Your Rights</h3>
       <hr />
       <br></br>
       <p>
@@ -19,7 +19,7 @@ export default async function Terms() {
         <li>Withdraw consent for data usage</li>
       </ul>
       <br />
-      <h3 className="text-lg font-semibold">Data Collection</h3>
+      <h3 className="text-2xl font-semibold text-gray-400 mb-4">Data Collection</h3>
       <hr />
       <br></br>
       <p>
@@ -28,7 +28,7 @@ export default async function Terms() {
         be used to enhance your experience.
       </p>
       <br />
-      <h3 className="text-lg font-semibold">Database Usage</h3> <hr />
+      <h3 className="text-2xl font-semibold text-gray-400 mb-4">Database Usage</h3> <hr />
       <br></br>
       <p>
         Our Discord bot collects and stores data in a secure database. This
@@ -36,7 +36,7 @@ export default async function Terms() {
         personalized services and improve functionality.
       </p>
       <br />
-      <h3 className="text-lg font-semibold">Cookies</h3> <hr />
+      <h3 className="text-2xl font-semibold text-gray-400 mb-4">Cookies</h3> <hr />
       <br></br>
       <p>
         We use cookies to track usage patterns and enhance your user experience.
@@ -44,7 +44,7 @@ export default async function Terms() {
         purposes.
       </p>
       <br />
-      <h3 className="text-lg font-semibold">Data Storage</h3> <hr />
+      <h3 className="text-2xl font-semibold text-gray-400 mb-4">Data Storage</h3> <hr />
       <br></br>
       <p>
         All data collected is securely stored in our database, and we take
@@ -52,7 +52,7 @@ export default async function Terms() {
         have access to this data.
       </p>
       <br />
-      <h3 className="text-lg font-semibold">Third-Party Services</h3> <hr />
+      <h3 className="text-2xl font-semibold text-gray-400 mb-4">Third-Party Services</h3> <hr />
       <br></br>
       <p>
         We may use third-party services, including Discord, for data processing
@@ -61,7 +61,7 @@ export default async function Terms() {
         policies.
       </p>
       <br />
-      <h3 className="text-lg font-semibold">Contact Us</h3>
+      <h3 className="text-2xl font-semibold text-gray-400 mb-4">Contact Us</h3>
       <hr />
       <br></br>
       <p>

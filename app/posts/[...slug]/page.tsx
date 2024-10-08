@@ -67,8 +67,8 @@ export default async function PostPage({ params }: PostProps) {
   }
 
   return (
-    <article className="p-10 py-6 prose dark:prose-invert items-center object-center rounded-3xl bg-gray-800">
-      <div className="flex flex-col items-center">
+    <article className="p-10 py-6 prose rose-invert items-center object-center rounded-3xl bg-gray-800 text-white">
+      <div className="flex flex-col items-center text-white">
         <Image
           src={postdata.Image ? postdata.Image : "/logo.png"}
           width={100}
@@ -76,79 +76,19 @@ export default async function PostPage({ params }: PostProps) {
           alt={postdata.EventName}
           className="mb-4"
         />
-        <h1 className="mb-2">{postdata.EventName}</h1>
+        <h1 className="mb-2 text-white">{postdata.EventName}</h1>
       </div>
-      <hr className="my-4" />
+      <hr className="my-4 text-white" />
       {/* Code MDX */}
       <Markdown
         options={{
           overrides: {
-            h1: {
-              component: "h1",
-              props: {
-                className: "text-4xl font-bold mt-4 mb-2",
-              },
-            },
-            h2: {
-              component: "h2",
-              props: {
-                className: "text-3xl font-bold mt-4 mb-2",
-              },
-            },
-            h3: {
-              component: "h3",
-              props: {
-                className: "text-2xl font-bold mt-4 mb-2",
-              },
-            },
-            h4: {
-              component: "h4",
-              props: {
-                className: "text-xl font-bold mt-4 mb-2",
-              },
-            },
-            h5: {
-              component: "h5",
-              props: {
-                className: "text-lg font-bold mt-4 mb-2",
-              },
-            },
-            p: {
-              component: "p",
-              props: {
-                className: "text-gray-300 text-md",
-              },
-            },
-            a: {
-              component: "a",
-              props: {
-                className: "text-primary-500 underline hover:text-primary",
-              },
-            },
-            code: {
-              component: "pre",
-              props: {
-                className: "bg-gray-900 text-gray-300 p-3 rounded-lg mt-3",
-              },
-            },
-            ol: {
-              component: "ol",
-              props: {
-                className: "list-decimal list-inside",
-              },
-            },
-            ul: {
-              component: "ul",
-              props: {
-                className: "list-disc list-inside",
-              },
-            },
-            li: {
-              component: "li",
-              props: {
-                className: "text-gray-300",
-              },
-            },
+            h1: { props: { className: 'text-white' } },
+            h2: { props: { className: 'text-white' } },
+            h3: { props: { className: 'text-white' } },
+            p: { props: { className: 'text-white' } },
+            li: { props: { className: 'text-white' } },
+            a: { props: { className: 'text-white' } },
           },
         }}
       >
@@ -157,18 +97,15 @@ export default async function PostPage({ params }: PostProps) {
       <br></br>
       <br></br>
       <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
       <div id="signup"></div>
       <hr></hr>
       {postdata.Looked ? (
-        <h5 className="text-center">
+        <h5 className="text-center text-white ">
           Das Event ist voll! Bitte warte etwas oder komme beim nächsten event
           vorbei.
         </h5>
       ) : postdata.Ended ? (
-        <h5 className="text-center">Das Event ist beendet!</h5>
+        <h5 className="text-center text-white">Das Event ist beendet!</h5>
       ) : (
         <SiginForm postID={postdata.ID} />
       )}
