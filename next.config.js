@@ -2,6 +2,8 @@
 const nextConfig = {
   env: {
     NEXTAUTHURL: process.env.AUTHURL, // pulls from .env file
+    NEXTMONGODBURL: process.env.MONGODBURL, // pulls from .env file
+    NEXTDBNAME: process.env.DBNAME, // pulls from .env file
   },
   reactStrictMode: true,
   swcMinify: true,

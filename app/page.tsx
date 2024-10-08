@@ -48,12 +48,12 @@ export default async function Home() {
     <div className="prose dark:prose-invert items-center object-center">
       {posts.map((post, index) => (
         <Link
-          className="text-blue-500 dark:text-blue-400 hover:underline"
+          className="text-blue-500 dark:text-blue-400 hover:underline no-underline"
           href={`/posts/${post.ID}`}
         >
           <div
             key={index}
-            className="bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-6 m-4 transition-transform transform hover:scale-105"
+            className="bg-gray-800 rounded-3xl shadow-lg p-6 m-4 transition-transform transform hover:scale-105 text-slate-50 "
           >
             <div className="flex flex-col items-center">
               {post.Image ? (
@@ -74,8 +74,8 @@ export default async function Home() {
                 />
               )}
 
-              <h1 className="text-2xl font-bold mb-2">{post.EventName}</h1>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+              <h1 className="text-2xl text-gray-300 font-bold mb-2">{post.EventName}</h1>
+              <p className="text-gray-300 mb-4">
                 {post.Description}
               </p>
             </div>

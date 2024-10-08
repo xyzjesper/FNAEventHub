@@ -10,6 +10,28 @@ const eventrole = new Schema({
   Description: String,
   Ended: Boolean,
   Looked: Boolean,
+  Turnier: Boolean,
+  FirstPlace: {
+    User: String,
+    Points: Number,
+    Description: String,
+    Avatar: String,
+    Link: String,
+  },
+  SecondPlace: {
+    User: String,
+    Points: Number,
+    Description: String,
+    Avatar: String,
+    Link: String,
+  },
+  ThirdPlace: {
+    User: String,
+    Points: Number,
+    Description: String,
+    Avatar: String,
+    Link: String,
+  },
 });
 
 module.exports = model("eventrole", eventrole);

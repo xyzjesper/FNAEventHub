@@ -3,7 +3,7 @@ import Link from "next/link";
 export default async function Home() {
   return (
     <>
-      <div className="min-h-screen p-6">
+      <div className="min-h-screen p-6 max-w-4xl mx-auto p-8 rounded-3xl bg-gray-800 text-white">
         <div className="max-w-4xl mx-auto  p-8 rounded-lg shadow-md">
           <h1 className="text-center mt-6 mb-12 bg-gradient-to-br to-blue-500 via-purple-600 from-pink-300 bg-clip-text text-transparent selection:text-gray-700 dark:selection:text-white/90 items-center mx-auto text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold">
             Impressum
@@ -77,6 +77,20 @@ export default async function Home() {
               Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
               Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung
               des jeweiligen Autors bzw. Erstellers.
+            </p>
+          </section>
+          <br></br>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-400 mb-4">
+              Weitere Informationen
+            </h2>
+            <p className="text-lg">
+              Diese website unterliegt auch den Nexocrew Terms of Service. Und wir auch von diesen betrieben. <br />
+
+              <Link className="text-blue-600" href="https://nexocrew.com/terms">
+                Terms of service
+              </Link>
             </p>
           </section>
         </div>

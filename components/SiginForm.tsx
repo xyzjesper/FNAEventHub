@@ -14,11 +14,10 @@ const sendEventData = async (event: React.FormEvent) => {
 
   const authUrl =
     discordurl +
-    `&state=${
-      (document.getElementById("ID") as HTMLInputElement)?.value ?? ""
+    `&state=${(document.getElementById("ID") as HTMLInputElement)?.value ?? ""
     }-${Buffer.from(
       (document.getElementById("infos") as HTMLInputElement)?.value ??
-        "keine info"
+      "keine info"
     ).toString("base64")}`;
 
   if (authUrl) {
@@ -34,18 +33,18 @@ export function SiginForm({ postID }: { postID: string }): JSX.Element {
       <div className="mb-5">
         <label
           htmlFor="infos"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm font-medium text-white"
         >
           <h5>Weitere Infos</h5>
         </label>
-        <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
+        <p className="text-xs text-gray-400 mb-2">
           Bitte gebe zusätzliche Informationen ein, die für das Event relevant
           sein könnten. (Event Team Partner, etc.)
         </p>
         <input
           type="text"
           id="infos"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className=" text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
       </div>
 
@@ -55,16 +54,16 @@ export function SiginForm({ postID }: { postID: string }): JSX.Element {
         required
         type="checkbox"
         value=""
-        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 dark:border-gray-600"
       />
       <label
         form="checkbox-1"
-        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        className="ms-2 text-sm font-medium text-white"
       >
         Ich akzeptiere die{" "}
         <Link
           href="/terms"
-          className="text-blue-600 hover:underline dark:text-blue-500"
+          className="text-blue-500"
         >
           allgemeinen AGB's
         </Link>
