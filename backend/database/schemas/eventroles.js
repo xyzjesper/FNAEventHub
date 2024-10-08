@@ -1,5 +1,6 @@
 const { model, Schema, models } = require("mongoose");
 const { String } = require("../schemaArguments");
+const { default: Link } = require("next/link");
 
 const eventroleSchema = new Schema({
   ID: String,
@@ -15,22 +16,25 @@ const eventroleSchema = new Schema({
     User: String,
     Points: Number,
     Description: String,
-    Avatar: String
+    Avatar: String,
+    Link: String,
   },
   SecondPlace: {
     User: String,
     Points: Number,
     Description: String,
-    Avatar: String
+    Avatar: String,
+    Link: String,
   },
   ThirdPlace: {
     User: String,
     Points: Number,
     Description: String,
     Avatar: String,
+    Link: String,
   },
 });
 
-const eventrole = models.eventrole || model("eventrole", eventroleSchema);
+const eventrole = models?.eventrole || model("eventrole", eventroleSchema);
 
 module.exports = eventrole;

@@ -47,6 +47,24 @@ module.exports = {
         .setMinValues(1)
     );
 
+    const selection = new ActionRowBuilder().addComponents(
+      new StringSelectMenuBuilder()
+        .setCustomId("event-add-select-type:" + eventID)
+        .setPlaceholder("Select the type of event")
+        .setMaxValues(1)
+        .addOptions(
+          {
+            label: "Event",
+            value: "event",
+          },
+
+          {
+            label: "Turnier",
+            value: "turnier",
+          }
+        )
+        .setMinValues(1)
+    );
     const data = await eventDB.findOne({ ID: eventID });
 
     if (data) {

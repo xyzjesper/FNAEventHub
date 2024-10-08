@@ -74,11 +74,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <p className="inline">Terms of service</p>
               </Link>
             </nav>
-            <p className="text-xs text-gray-400">&copy; 2023 FNA Events.de. All rights reserved.</p>
+            <p className="text-xs text-gray-400">
+              &copy; {new Date().getFullYear()} FNA Events.de. All rights
+              reserved.
+            </p>
           </div>
         </footer>
         <br></br>
-
       </body>
     </html>
   );

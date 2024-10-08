@@ -15,19 +15,22 @@ const eventrole = new Schema({
     User: String,
     Points: Number,
     Description: String,
-    Avatar: String
+    Avatar: String,
+    Link: String,
   },
   SecondPlace: {
     User: String,
     Points: Number,
     Description: String,
-    Avatar: String
+    Avatar: String,
+    Link: String,
   },
   ThirdPlace: {
     User: String,
     Points: Number,
     Description: String,
     Avatar: String,
+    Link: String,
   },
 });
 
