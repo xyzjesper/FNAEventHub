@@ -82,6 +82,6 @@ module.exports = {
       Description: description,
     });
 
-    interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
+    interaction.reply({ embeds: [embed], components: [row, selection], ephemeral: true });
   },
 };
