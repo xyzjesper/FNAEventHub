@@ -76,6 +76,10 @@ export default async function PostPage({ params }: PostProps) {
             <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg">
               Turnier
             </span>
+          ) : postdata.Kooperation ? (
+            <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg">
+              Kooperation
+            </span>
           ) : (
             <span className="bg-pink-400 text-white px-6 py-3 text-lg rounded-full shadow-lg">
               Event

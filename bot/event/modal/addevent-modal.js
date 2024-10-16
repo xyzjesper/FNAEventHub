@@ -61,6 +61,10 @@ module.exports = {
           {
             label: "Turnier",
             value: "turnier",
+          },
+          {
+            label: "Kooperation",
+            value: "kooperation",
           }
         )
         .setMinValues(1)
@@ -82,6 +86,10 @@ module.exports = {
       Description: description,
     });
 
-    interaction.reply({ embeds: [embed], components: [row, selection], ephemeral: true });
+    interaction.reply({
+      embeds: [embed],
+      components: [row, selection],
+      ephemeral: true,
+    });
   },
 };

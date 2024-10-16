@@ -67,14 +67,11 @@ app.get("/event", async (req, res) => {
     .then(async (response) => {
       const userDB = require("./database/schemas/eventuser");
 
+      const url = req.url;
       const data = await userDB.findOne({
         Username: response.username,
+        EventID: url.split("&")[1].split("=")[1].split("-")[0],
       });
-
-      const url = req.url;
-      console.log();
-      console.log();
-
       if (data) {
         return res.redirect(ERROR);
       }
@@ -90,7 +87,8 @@ app.get("/event", async (req, res) => {
 
       res.redirect(SUCCESS);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       return res.redirect(ERROR);
     });
 });

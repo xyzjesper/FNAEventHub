@@ -1,4 +1,4 @@
-// File: C:\Users\jespe\Desktop\Code\__Aufträge\PexyPage\pexypage\app\posts\[...slug]\page.tsx
+// File: C:\Users\xyzjesper\Documents\GitHub\FNAEventHub\app\posts\[...slug]\page.tsx
 import * as entry from '../../../../../app/posts/[...slug]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

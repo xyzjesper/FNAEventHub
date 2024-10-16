@@ -65,6 +65,21 @@ module.exports = {
             });
           }
           break;
+        case "kooperation":
+          {
+            await eventDB.findOneAndUpdate(
+              { ID: eventID },
+              {
+                Kooperation: true,
+              }
+            );
+
+            interaction.reply({
+              content: "## :white_check_mark: Turnier erfolgreich hinzugefügt!",
+              ephemeral: true,
+            });
+          }
+          break;
       }
     });
   },

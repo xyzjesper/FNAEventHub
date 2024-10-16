@@ -12,6 +12,7 @@ const eventroleSchema = new Schema({
   Ended: { type: Boolean, default: false },
   Looked: { type: Boolean, default: false },
   Turnier: Boolean,
+  Kooperation: Boolean,
   FirstPlace: {
     User: String,
     Points: Number,
