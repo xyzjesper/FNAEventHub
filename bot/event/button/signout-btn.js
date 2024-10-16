@@ -42,10 +42,17 @@ module.exports = {
 
     await interaction.member.roles.remove(role);
 
-    await userDB.deleteMany({
+    await userDB.deleteOne({
       Username: interaction.user.username,
+      EventID: eventID,
     });
 
-    await interaction.deferUpdate();
+    await interaction.reply({
+      content:
+        "## :white_check_mark: Du wurdest erfolgreich abgemeldet (Event ID: " +
+        eventID +
+        ")",
+      ephemeral: true,
+    });
   },
 };

@@ -24,6 +24,7 @@ module.exports = {
    * @param {Client} client
    */
   async execute(interaction, client) {
+    await interaction.deferReply({ ephemeral: true });
     const userDB = require("../event/schema/eventuser");
     const data = await userDB.findOne({ Username: interaction.user.username });
     const eventDB = require("../event/schema/eventroles");
@@ -34,41 +35,45 @@ module.exports = {
         ephemeral: true,
       });
     }
-
-    const event = await eventDB.findOne({ ID: data?.EventID });
-
-    if (!event) {
-      return interaction.reply({
-        content: "## :x: This user is not registered in any event",
-        ephemeral: true,
-      });
-    }
-
-    const role = interaction.guild.roles.cache.get(event.RoleID);
-    const guild = interaction.guild;
-    const user = guild.members.cache.get(interaction.user.id);
+    const row = new ActionRowBuilder();
     const embed = new EmbedBuilder()
-      .setTitle("Profile")
+      .setTitle("Manage your profile")
       .setDescription(
-        `> **Username**: ${interaction.user.username}\n> **Event**: ${event.EventName}\n> **Role**: <@&${role.id}>`
+        [
+          `> **User**: \`${interaction.user.username}\``,
+          `> **ID**: \`${interaction.user.id}\``,
+        ].join("\n")
       )
       .setAuthor({
         name: interaction.user.username,
         iconURL: interaction.user.displayAvatarURL(),
       });
 
-    const row = new ActionRowBuilder().addComponents(
-      new ButtonBuilder()
-        .setLabel("Sign out")
-        .setEmoji("❌")
-        .setCustomId(`signout-btn:${event.ID}`)
-        .setStyle(ButtonStyle.Danger)
-    );
+    const userevents = await userDB
+      .find({ Username: interaction.user.username })
+      .sort();
 
-    await interaction.reply({
-      embeds: [embed],
-      ephemeral: true,
-      components: [row],
+    userevents.forEach(async (uevents) => {
+      const events = await eventDB
+        .find({
+          ID: uevents.EventID,
+        })
+        .sort();
+
+      events.forEach(async (bevent) => {
+        let button = new ButtonBuilder()
+          .setLabel("Abmelden vom " + bevent.EventName)
+          .setEmoji("❌")
+          .setCustomId(`signout-btn:${bevent.ID}`)
+          .setStyle(ButtonStyle.Primary);
+        row.addComponents(button);
+      });
+
+      await interaction.editReply({
+        embeds: [embed],
+        ephemeral: true,
+        components: [row],
+      });
     });
   },
 };
