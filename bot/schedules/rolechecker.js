@@ -32,10 +32,6 @@ async function eventroleCkecker(client) {
       return;
     }
 
-    const userdata = await userDB.findOne({
-      Username: data.Username,
-    });
-
     const event = await eventDB.findOne({ ID: data.EventID });
 
     if (!event) {
@@ -52,7 +48,7 @@ async function eventroleCkecker(client) {
 
     await userDB.findOneAndUpdate(
       { Username: data.Username },
-      { Boolean: true, Avatar: member.user.displayAvatarURL({ dynamic: true }) }
+      { Boolean: true, Avatar: user.displayAvatarURL({ dynamic: true }) }
     );
 
     const channel = guild.channels.cache.get(event.EventChannel);

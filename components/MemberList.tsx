@@ -23,6 +23,7 @@ export function MemberList({ postID }: { postID: string }) {
       if (memberlist.length > 0) {
         return;
       }
+
       setMemberList(members);
     }
     fetchMemberList();
@@ -48,29 +49,35 @@ export function MemberList({ postID }: { postID: string }) {
         </span>
       </button>
 
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out bg-gray-800 rounded-lg shadow-lg ${
-          isOpen ? "max-h-96" : "max-h-0"
-        }`}
-      >
-        {memberlist.map((member, index) => (
-          <div
-            key={index}
-            className="transition-colors duration-1000 p-4 border-b border-gray-700 last:border-none"
-          >
-            <div className="flex items-center space-x-4 mb-2">
-              <Image
-                className="rounded-full"
-                src={member?.Avatar ?? "/logo.png"}
-                height={40}
-                width={40}
-                alt="Avatar"
-              />
-              <p className="font-bold text-lg text-white">{member.Username}</p>
+      {isOpen && (
+        <div
+          className={`transition-all duration-300 ease-in-out bg-gray-800 rounded-lg shadow-lg max-h-96 overflow-y-auto`}
+        >
+          {memberlist.map((member, index) => (
+            <div
+              key={index}
+              className="transition-colors duration-1000 p-4 border-b border-gray-700 last:border-none"
+            >
+              <div className="flex items-center space-x-4 mb-2">
+                <Image
+                  className="rounded-full"
+                  src={member?.Avatar ?? "/logo.png"}
+                  height={40}
+                  width={40}
+                  alt={
+                    member?.Avatar
+                      ? member.Avatar.split("/").pop()
+                      : "default-avatar"
+                  }
+                />
+                <p className="font-bold text-lg text-white">
+                  {member.Username}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

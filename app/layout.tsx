@@ -76,12 +76,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   <p className="inline">Terms of service</p>
                 </Link>
               </nav>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-400 text-center">
                 &copy; {new Date().getFullYear()} FNA Events.de. All rights
-                reserved.{" "}
-                <p className="text-xs text-center">
-                  <Link href={"https://nexocrew.com/"}>Coded by nexocrew.com</Link>
-                </p>
+                reserved.
+                <Link href={"https://nexocrew.com/"}>
+                  {" "}
+                  - Coded by nexocrew.com
+                </Link>
               </p>
             </div>
           </footer>
