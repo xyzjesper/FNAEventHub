@@ -1,8 +1,8 @@
 # FNA Event Hub
 
-- **Discord**: https://fna-event.de/discord
-- **Website**: https://fna-event.de
-- **About US**: https://fna-event.de/about
+- **Discord**: https://fna-events.de/discord
+- **Website**: https://fna-events.de/
+- **About US**: https://fna-events.de/about
 
 
 # Credits
