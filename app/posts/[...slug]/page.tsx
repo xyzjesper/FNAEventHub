@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 
 import { Metadata } from "next";
-// import { Mdx } from "@/components/mdx-components";
 import { SiginForm } from "@/components/SiginForm";
 import eventDB from "../../../backend/database/schemas/eventroles";
 import { connect, default as mongoose } from "mongoose";
@@ -9,6 +8,7 @@ import Markdown from "markdown-to-jsx";
 import Link from "next/link";
 import Image from "next/image";
 import { link } from "fs";
+import { MemberList } from "@/components/MemberList";
 
 mongoose.set("strictQuery", true);
 const mongoUrl = process.env.MONGODBURL;
@@ -73,15 +73,15 @@ export default async function PostPage({ params }: PostProps) {
         {" "}
         <div className="flex justify-center space-x-4 mb-6">
           {postdata.Turnier ? (
-            <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg">
+            <span className="bg-yellow-600 text-white px-6 py-3 text-lg rounded-full shadow-lg">
               Turnier
             </span>
           ) : postdata.Kooperation ? (
-            <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg">
+            <span className="bg-green-400 text-white px-6 py-3 text-lg rounded-full shadow-lg">
               Kooperation
             </span>
           ) : (
-            <span className="bg-pink-400 text-white px-6 py-3 text-lg rounded-full shadow-lg">
+            <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg">
               Event
             </span>
           )}
@@ -96,9 +96,7 @@ export default async function PostPage({ params }: PostProps) {
         <h1 className="mb-2 text-white">{postdata.EventName}</h1>
       </div>
       <hr className="my-4 text-white" />
-
       {/* Winner Board */}
-
       {postdata.Ended ? (
         <section className="w-full my-8">
           <h2 className="text-center text-2xl mb-6">Winner Board</h2>
@@ -168,7 +166,6 @@ export default async function PostPage({ params }: PostProps) {
           </div>
         </section>
       ) : null}
-
       {/* Code MDX */}
       <Markdown
         options={{
@@ -197,8 +194,16 @@ export default async function PostPage({ params }: PostProps) {
       ) : postdata.Ended ? (
         <h5 className="text-center text-white">Das Event ist beendet!</h5>
       ) : (
-        <SiginForm postID={postdata.ID} />
+        <>
+          <h3 className="text-center text-white">
+            Melde dich für das Event an!
+            <br></br>
+            <br></br>
+          </h3>
+          <SiginForm postID={postdata.ID} />
+        </>
       )}
+      <MemberList postID={postdata.ID} />
     </article>
   );
 }

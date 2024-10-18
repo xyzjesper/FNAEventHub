@@ -78,15 +78,15 @@ export default async function Home() {
               <p className="text-gray-300 mb-4">{post.Description}</p>
               <div className="flex justify-center space-x-4 mb-6 no-underline">
                 {post.Turnier ? (
-                  <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg no-underline">
+                  <span className="bg-yellow-600 text-white px-6 py-3 text-lg rounded-full shadow-lg no-underline">
                     Turnier
                   </span>
                 ) : post.Kooperation ? (
-                  <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg no-underline">
+                  <span className="bg-green-400 text-white px-6 py-3 text-lg rounded-full shadow-lg no-underline">
                     Kooperation
                   </span>
                 ) : (
-                  <span className="bg-pink-400 text-white px-6 py-3 text-lg rounded-full shadow-lg no-underline">
+                  <span className="bg-purple-500 text-white px-6 py-3 text-lg rounded-full shadow-lg no-underline">
                     Event
                   </span>
                 )}

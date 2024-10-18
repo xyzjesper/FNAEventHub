@@ -52,7 +52,7 @@ async function eventroleCkecker(client) {
 
     await userDB.findOneAndUpdate(
       { Username: data.Username },
-      { Boolean: true }
+      { Boolean: true, Avatar: member.user.displayAvatarURL({ dynamic: true }) }
     );
 
     const channel = guild.channels.cache.get(event.EventChannel);

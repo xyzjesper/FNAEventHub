@@ -6,6 +6,7 @@ const eventuser = new Schema({
   EventID: String,
   Infos: String,
   Boolean: Boolean,
+  Avatar: String,
 });
 
 module.exports = model("eventuser", eventuser);

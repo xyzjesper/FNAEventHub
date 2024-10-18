@@ -2,6 +2,7 @@
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { Textarea } from "@nextui-org/react";
 
 interface SiginFormProps {
   postID: string;
@@ -14,10 +15,11 @@ const sendEventData = async (event: React.FormEvent) => {
 
   const authUrl =
     discordurl +
-    `&state=${(document.getElementById("ID") as HTMLInputElement)?.value ?? ""
+    `&state=${
+      (document.getElementById("ID") as HTMLInputElement)?.value ?? ""
     }-${Buffer.from(
       (document.getElementById("infos") as HTMLInputElement)?.value ??
-      "keine info"
+        "keine info"
     ).toString("base64")}`;
 
   if (authUrl) {
@@ -41,10 +43,13 @@ export function SiginForm({ postID }: { postID: string }): JSX.Element {
           Bitte gebe zusätzliche Informationen ein, die für das Event relevant
           sein könnten. (Event Team Partner, etc.)
         </p>
-        <input
-          type="text"
-          id="infos"
-          className=" text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        <Textarea
+          minLength={10}
+          maxLength={500}
+          defaultValue=""
+          errorMessage="Du hast das zeichen limit erreicht"
+          isInvalid={false}
+          className="text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
       </div>
 
@@ -56,16 +61,10 @@ export function SiginForm({ postID }: { postID: string }): JSX.Element {
         value=""
         className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 dark:border-gray-600"
       />
-      <label
-        form="checkbox-1"
-        className="ms-2 text-sm font-medium text-white"
-      >
+      <label form="checkbox-1" className="ms-2 text-sm font-medium text-white">
         Ich akzeptiere die{" "}
-        <Link
-          href="/terms"
-          className="text-blue-500"
-        >
-          allgemeinen AGB's
+        <Link href="/terms" className="text-blue-500">
+          AGB's
         </Link>
         .<p className="text-red-600 inline">*</p>
       </label>

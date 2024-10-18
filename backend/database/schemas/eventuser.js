@@ -1,11 +1,14 @@
-const { model, Schema } = require("mongoose");
+const { model, Schema, models } = require("mongoose");
 const { String } = require("../schemaArguments");
 
-const eventuser = new Schema({
+const eventuserSchema = new Schema({
   Username: String,
   EventID: String,
   Infos: String,
+  Avatar: String,
   Boolean: Boolean,
 });
 
-module.exports = model("eventuser", eventuser);
+const eventuser = models?.eventuser || model("eventuser", eventuserSchema);
+
+module.exports = eventuser;

@@ -12,6 +12,7 @@
     "bot": "nodemon ./bot/index.js"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.4.8",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "22.7.4",
     "@types/react": "18.3.10",
